@@ -1,0 +1,55 @@
+{
+    "date": "2024-11-16 15:26:05",
+    "total_cost": 47000,
+    "network_connections": [
+        {
+            "start": "Water Station A",
+            "end": "Household 1",
+            "cost": 5000,
+            "status": "active"
+        },
+        {
+            "start": "Water Station A",
+            "end": "Household 2",
+            "cost": 7000,
+            "status": "maintenance"
+        },
+        {
+            "start": "Water Station A",
+            "end": "Household 2",
+            "cost": 7000,
+            "status": "maintenance"
+        },
+        {
+            "start": "Water Station A",
+            "end": "Household 2",
+            "cost": 7000,
+            "status": "maintenance"
+        },
+        {
+            "start": "Water Station A",
+            "end": "Household 2",
+            "cost": 7000,
+            "status": "maintenance"
+        },
+        {
+            "start": "Water Station A",
+            "end": "Household 2",
+            "cost": 7000,
+            "status": "maintenance"
+        },
+        {
+            "start": "Water Station A",
+            "end": "Household 2",
+            "cost": 7000,
+            "status": "maintenance"
+        }
+    ],
+    "suggested_connections": [
+        {
+            "start": "Water Station A",
+            "end": "Household 2",
+            "suggested_cost": 6500
+        }
+    ]
+}
