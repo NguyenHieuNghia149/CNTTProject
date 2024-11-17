@@ -1,5 +1,3 @@
-# main.py
-
 import sys
 import os
 # Thêm thư mục gốc của dự án vào PYTHONPATH
@@ -12,15 +10,16 @@ import networkx as nx
 def main():
     st.title('Water Network Management System')
 
+    # Tạo menu điều hướng trong sidebar
     menu = ["Map View", "Data Input", "Result View", "Control Panel"]
     choice = st.sidebar.selectbox("Select a page", menu)
 
     if choice == "Map View":
-        map_view.show_map()  # Gọi hàm hiển thị bản đồ
+        # Gọi hàm hiển thị bản đồ từ map_view và ô nhập tọa độ mới
+        map_view.main() 
     elif choice == "Data Input":
         data_input.show_input_form()
     elif choice == "Result View":
-        
         result_view.show_results()
     elif choice == "Control Panel":
         control_panel.show_control_panel()
