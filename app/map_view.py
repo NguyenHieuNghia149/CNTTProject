@@ -18,11 +18,9 @@ def read_connections():
     if os.path.exists(connections_file):
         with open(connections_file, 'r', encoding='utf-8') as f:
             data = json.load(f)
-            # Nếu dữ liệu là danh sách, trả về trực tiếp
-            if isinstance(data, list):
+            if isinstance(data, list):  # Nếu là danh sách, trả về trực tiếp
                 return data
-            # Nếu dữ liệu là dict, cố gắng lấy 'connections'
-            return data.get('connections', [])
+            return data.get('connections', [])  # Nếu là dict, trả về 'connections'
     return []
 
 # Lấy tọa độ của điểm theo tên từ coordinates.json
@@ -36,7 +34,6 @@ def get_coordinates_by_name(name, coordinates):
 def draw_connection(map_obj, coord_from, coord_to, cost, status):
     line = folium.PolyLine([coord_from, coord_to], color="blue", weight=2.5, opacity=1)
     line.add_to(map_obj)
-    # Thêm thông tin chi phí và trạng thái vào popup của đường nối
     line_popup = f"Cost: {cost} | Status: {status}"
     folium.Popup(line_popup).add_to(line)
 
@@ -45,6 +42,12 @@ def save_coordinates(coordinates):
     coordinates_file = 'data/coordinates.json'
     with open(coordinates_file, 'w', encoding='utf-8') as f:
         json.dump(coordinates, f, ensure_ascii=False, indent=4)
+
+# Lưu các kết nối vào file JSON
+def save_connections(connections):
+    connections_file = 'data/connections.json'
+    with open(connections_file, 'w', encoding='utf-8') as f:
+        json.dump(connections, f, ensure_ascii=False, indent=4)
 
 # Thêm marker vào bản đồ
 def add_marker(map_obj, coordinates, popup_text):
@@ -70,12 +73,9 @@ def show_map():
 
     # Vẽ các tuyến đường nối giữa các điểm dựa trên kết nối
     for conn in connections:
-        # Lấy tọa độ từ coordinates.json
         coord_from = get_coordinates_by_name(conn["start"], coordinates)
         coord_to = get_coordinates_by_name(conn["end"], coordinates)
-        
         if coord_from and coord_to:
-            # Kiểm tra xem tọa độ có hợp lệ không trước khi vẽ đường nối
             draw_connection(m, coord_from, coord_to, conn["cost"], conn["status"])
 
     # Hiển thị bản đồ trong Streamlit
@@ -83,51 +83,63 @@ def show_map():
 
 # Thêm ô nhập tọa độ mới
 def add_new_coordinate():
-    # Tiêu đề to và đậm
     st.markdown("<h3 style='font-weight: bold; font-size: 24px;'>Thêm tọa độ mới</h3>", unsafe_allow_html=True)
-
-    # Nhập tên và tọa độ
     name = st.text_input("Tên điểm:")
     lat = st.number_input("Vĩ độ:", min_value=-90.0, max_value=90.0, format="%.6f")
     lon = st.number_input("Kinh độ:", min_value=-180.0, max_value=180.0, format="%.6f")
 
     if st.button("Thêm tọa độ"):
         if name and lat and lon:
-            # Đọc tọa độ đã có
             coordinates = read_coordinates()
-
-            # Thêm tọa độ mới vào danh sách
-            new_coordinate = {
-                "name": name,
-                "coordinates": [lat, lon]
-            }
+            new_coordinate = {"name": name, "coordinates": [lat, lon]}
             coordinates.append(new_coordinate)
-
-            # Lưu lại danh sách tọa độ mới vào file
             save_coordinates(coordinates)
-
             st.success("Tọa độ mới đã được thêm vào.")
-
-            # Sau khi thêm tọa độ, làm mới ứng dụng và hiển thị bản đồ mới
             st.experimental_rerun()
-
         else:
             st.error("Vui lòng nhập đủ thông tin.")
 
-# Gọi các hàm trong Streamlit để hiển thị bản đồ và ô nhập tọa độ mới
+# Xóa tọa độ khỏi files JSON
+def delete_coordinate(selected_name):
+    coordinates = read_coordinates()
+    connections = read_connections()
+
+    # Xóa điểm khỏi coordinates.json
+    coordinates = [coord for coord in coordinates if coord["name"] != selected_name]
+    save_coordinates(coordinates)
+
+    # Xóa tất cả kết nối liên quan khỏi connections.json
+    connections = [conn for conn in connections if conn["start"] != selected_name and conn["end"] != selected_name]
+    save_connections(connections)
+
+    st.success(f"Đã xóa điểm '{selected_name}' thành công.")
+    st.experimental_rerun()
+
+# Hiển thị danh sách các điểm và cho phép xóa
+def delete_existing_coordinate():
+    st.markdown("<h3 style='font-weight: bold; font-size: 24px;'>Xóa tọa độ</h3>", unsafe_allow_html=True)
+    coordinates = read_coordinates()
+    names = [coord["name"] for coord in coordinates]
+    selected_name = st.selectbox("Chọn điểm để xóa:", options=["-- Chọn điểm --"] + names)
+
+    if st.button("Xóa điểm"):
+        if selected_name and selected_name != "-- Chọn điểm --":
+            delete_coordinate(selected_name)
+        else:
+            st.error("Vui lòng chọn điểm hợp lệ để xóa.")
+
+# Gọi các hàm trong Streamlit để hiển thị bản đồ và ô nhập/xóa tọa độ mới
 def main():
     st.title("Bản đồ tọa độ")
+    col1, col2 = st.columns([3, 1])
 
-    # Layout cho Streamlit: tạo cột bên trái chứa bản đồ, cột bên phải chứa ô nhập
-    col1, col2 = st.columns([3, 1])  # Cột bên trái 3 phần, cột bên phải 1 phần
-
-    # Hiển thị bản đồ trong cột bên trái
     with col1:
         show_map()
 
-    # Hiển thị ô nhập tọa độ mới trong sidebar, bên ngoài bản đồ
     with st.sidebar:
         add_new_coordinate()
+        st.markdown("<hr>", unsafe_allow_html=True)
+        delete_existing_coordinate()
 
 if __name__ == "__main__":
     main()
