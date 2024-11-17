@@ -27,15 +27,12 @@ def generate_report():
         else:
             print(f"Invalid connection entry skipped: {conn}")
 
-    suggested_connections = [
-        {"start": "Water Station A", "end": "Household 2", "suggested_cost": 6500}
-    ]
+   
 
     report = {
         "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "total_cost": sum(conn.get("cost", 0) for conn in network_connections),
         "network_connections": network_connections,
-        "suggested_connections": suggested_connections
     }
 
     # Step 3: Write the report to network_report.json

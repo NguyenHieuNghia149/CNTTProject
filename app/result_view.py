@@ -17,9 +17,7 @@ def call_report():
     for conn in report['network_connections']:
         st.write(f"Start: {conn['start']}, End: {conn['end']}, Cost: {conn['cost']}, Status: {conn['status']}")
 
-    st.write("Suggested Connections:")
-    for suggestion in report['suggested_connections']:
-        st.write(f"Start: {suggestion['start']}, End: {suggestion['end']}, Suggested Cost: {suggestion['suggested_cost']}")
+ 
     
 
 def show_results():

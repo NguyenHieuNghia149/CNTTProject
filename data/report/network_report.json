@@ -1,6 +1,6 @@
 {
-    "date": "2024-11-17 15:15:08",
-    "total_cost": 13800,
+    "date": "2024-11-18 05:46:31",
+    "total_cost": 24400,
     "network_connections": [
         {
             "start": "Khu A",
@@ -149,15 +149,14 @@
         {
             "start": "X\u01b0\u1edfng th\u1ef1c t\u1eadp ngu\u1ed9i",
             "end": "X\u01b0\u1edfng th\u1ef1c t\u1eadp ngh\u1ec1",
-            "cost": 400,
-            "status": "active"
-        }
-    ],
-    "suggested_connections": [
+            "cost": 10000,
+            "status": "maintenance"
+        },
         {
-            "start": "Water Station A",
-            "end": "Household 2",
-            "suggested_cost": 6500
+            "start": "Khu A",
+            "end": "Khu B",
+            "cost": 1000,
+            "status": "maintenance"
         }
     ]
 }

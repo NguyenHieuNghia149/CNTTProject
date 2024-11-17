@@ -146,7 +146,13 @@
     {
         "start": "Xưởng thực tập nguội",
         "end": "Xưởng thực tập nghề",
-        "cost": 400,
-        "status": "active"
+        "cost": 10000,
+        "status": "maintenance"
+    },
+    {
+        "start": "Khu A",
+        "end": "Khu B",
+        "cost": 1000,
+        "status": "maintenance"
     }
 ]
