@@ -55,7 +55,7 @@ def draw_connection(map_obj, coord_from, coord_to, cost, status):
 # Hiển thị bản đồ và các marker từ tọa độ trong file JSON
 def show_map():
     # Tạo bản đồ
-    m = folium.Map(location=[10.850923620459348, 106.76728506920097], zoom_start=12)
+    m = folium.Map(location=[10.85047074597321, 106.77195312611487], zoom_start=12)
 
     # Đọc các tọa độ đã lưu từ file
     coordinates = read_coordinates()

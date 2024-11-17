@@ -1,48 +1,156 @@
 {
-    "date": "2024-11-16 15:26:05",
-    "total_cost": 47000,
+    "date": "2024-11-16 23:28:35",
+    "total_cost": 13800,
     "network_connections": [
         {
-            "start": "Water Station A",
-            "end": "Household 1",
+            "start": "Khu A",
+            "end": "T\u00f2a nh\u00e0 trung t\u00e2m",
             "cost": 5000,
             "status": "active"
         },
         {
-            "start": "Water Station A",
-            "end": "Household 2",
-            "cost": 7000,
-            "status": "maintenance"
+            "start": "T\u00f2a E",
+            "end": "Khu A",
+            "cost": 200,
+            "status": "active"
         },
         {
-            "start": "Water Station A",
-            "end": "Household 2",
-            "cost": 7000,
-            "status": "maintenance"
+            "start": "T\u00f2a nh\u00e0 trung t\u00e2m",
+            "end": "X\u01b0\u1edfng th\u1ef1c t\u1eadp ngu\u1ed9i",
+            "cost": 400,
+            "status": "active"
         },
         {
-            "start": "Water Station A",
-            "end": "Household 2",
-            "cost": 7000,
-            "status": "maintenance"
+            "start": "Nh\u00e0 m\u00e1y n\u01b0\u1edbc Th\u1ee7 \u0110\u1ee9c",
+            "end": "X\u01b0\u1edfng m\u00e1y",
+            "cost": 600,
+            "status": "active"
         },
         {
-            "start": "Water Station A",
-            "end": "Household 2",
-            "cost": 7000,
-            "status": "maintenance"
+            "start": "X\u01b0\u1edfng m\u00e1y",
+            "end": "T\u00f2a nh\u00e0 trung t\u00e2m",
+            "cost": 500,
+            "status": "active"
         },
         {
-            "start": "Water Station A",
-            "end": "Household 2",
-            "cost": 7000,
-            "status": "maintenance"
+            "start": "X\u01b0\u1edfng m\u00e1y",
+            "end": "Khu A",
+            "cost": 300,
+            "status": "active"
         },
         {
-            "start": "Water Station A",
-            "end": "Household 2",
-            "cost": 7000,
-            "status": "maintenance"
+            "start": "X\u01b0\u1edfng m\u00e1y",
+            "end": "Khu C",
+            "cost": 500,
+            "status": "active"
+        },
+        {
+            "start": "Khu C",
+            "end": "Khu A",
+            "cost": 400,
+            "status": "active"
+        },
+        {
+            "start": "Khu C",
+            "end": "Khu D",
+            "cost": 200,
+            "status": "active"
+        },
+        {
+            "start": "Khu D",
+            "end": "Khu A",
+            "cost": 200,
+            "status": "active"
+        },
+        {
+            "start": "Khu D",
+            "end": "C\u0103n tin A",
+            "cost": 700,
+            "status": "active"
+        },
+        {
+            "start": "X\u01b0\u1edfng m\u00e1y",
+            "end": "Khu B",
+            "cost": 300,
+            "status": "active"
+        },
+        {
+            "start": "Khu C",
+            "end": "Khu B",
+            "cost": 300,
+            "status": "active"
+        },
+        {
+            "start": "X\u01b0\u1edfng m\u00e1y",
+            "end": "Khu F",
+            "cost": 600,
+            "status": "active"
+        },
+        {
+            "start": "T\u00f2a nh\u00e0 trung t\u00e2m",
+            "end": "Khu F",
+            "cost": 600,
+            "status": "active"
+        },
+        {
+            "start": "T\u00f2a E",
+            "end": "C\u0103n tin A",
+            "cost": 100,
+            "status": "active"
+        },
+        {
+            "start": "T\u00f2a nh\u00e0 trung t\u00e2m",
+            "end": "C\u0103n tin A",
+            "cost": 200,
+            "status": "active"
+        },
+        {
+            "start": "X\u01b0\u1edfng th\u1ef1c t\u1eadp in",
+            "end": "T\u00f2a E",
+            "cost": 400,
+            "status": "active"
+        },
+        {
+            "start": "X\u01b0\u1edfng th\u1ef1c t\u1eadp in",
+            "end": "X\u01b0\u1edfng th\u1ef1c t\u1eadp ngu\u1ed9i",
+            "cost": 300,
+            "status": "active"
+        },
+        {
+            "start": "X\u01b0\u1edfng th\u1ef1c t\u1eadp ngu\u1ed9i",
+            "end": "V\u0103n ph\u00f2ng khoa CKM",
+            "cost": 400,
+            "status": "active"
+        },
+        {
+            "start": "X\u01b0\u1edfng th\u1ef1c t\u1eadp ngh\u1ec1",
+            "end": "V\u0103n ph\u00f2ng khoa CKM",
+            "cost": 200,
+            "status": "active"
+        },
+        {
+            "start": "T\u00f2a nh\u00e0 trung t\u00e2m",
+            "end": "X\u01b0\u1edfng th\u1ef1c t\u1eadp ngh\u1ec1",
+            "cost": 500,
+            "status": "active"
+        },
+        {
+            "start": "X\u01b0\u1edfng th\u1ef1c t\u1eadp ngh\u1ec1",
+            "end": "T\u00f2a E",
+            "cost": 300,
+            "status": "active"
+        },
+        {
+            "start": "X\u01b0\u1edfng th\u1ef1c t\u1eadp ngh\u1ec1",
+            "end": "X\u01b0\u1edfng th\u1ef1c t\u1eadp in",
+            "cost": 200,
+            "status": "active"
+        },
+        {
+            "start": "X\u01b0\u1edfng th\u1ef1c t\u1eadp ngu\u1ed9i",
+            "end": "X\u01b0\u1edfng th\u1ef1c t\u1eadp ngh\u1ec1",
+            "cost": 400,
+            "status": "active"
         }
     ],
     "suggested_connections": [

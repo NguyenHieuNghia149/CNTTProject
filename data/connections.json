@@ -1,10 +1,152 @@
 [
-    {"start": "Water Station A", "end": "Household 1", "cost": 5000, "status": "active"},
-    {"start": "Water Station A", "end": "Household 2", "cost": 7000, "status": "maintenance"},
-    {"start": "Water Station A", "end": "Household 2", "cost": 7000, "status": "maintenance"},
-    {"start": "Water Station A", "end": "Household 2", "cost": 7000, "status": "maintenance"},
-    {"start": "Water Station A", "end": "Household 2", "cost": 7000, "status": "maintenance"},
-    {"start": "Water Station A", "end": "Household 2", "cost": 7000, "status": "maintenance"},
-    {"start": "Water Station A", "end": "Household 2", "cost": 7000, "status": "maintenance"}
-
+    {
+        "start": "Khu A",
+        "end": "Tòa nhà trung tâm",
+        "cost": 5000,
+        "status": "active"
+    },
+    {
+        "start": "Tòa E",
+        "end": "Khu A",
+        "cost": 200,
+        "status": "active"
+    },
+    {
+        "start": "Tòa nhà trung tâm",
+        "end": "Xưởng thực tập nguội",
+        "cost": 400,
+        "status": "active"
+    },
+    {
+        "start": "Nhà máy nước Thủ Đức",
+        "end": "Xưởng máy",
+        "cost": 600,
+        "status": "active"
+    },
+    {
+        "start": "Xưởng máy",
+        "end": "Tòa nhà trung tâm",
+        "cost": 500,
+        "status": "active"
+    },
+    {
+        "start": "Xưởng máy",
+        "end": "Khu A",
+        "cost": 300,
+        "status": "active"
+    },
+    {
+        "start": "Xưởng máy",
+        "end": "Khu C",
+        "cost": 500,
+        "status": "active"
+    },
+    {
+        "start": "Khu C",
+        "end": "Khu A",
+        "cost": 400,
+        "status": "active"
+    },
+    {
+        "start": "Khu C",
+        "end": "Khu D",
+        "cost": 200,
+        "status": "active"
+    },
+    {
+        "start": "Khu D",
+        "end": "Khu A",
+        "cost": 200,
+        "status": "active"
+    },
+    {
+        "start": "Khu D",
+        "end": "Căn tin A",
+        "cost": 700,
+        "status": "active"
+    },
+    {
+        "start": "Xưởng máy",
+        "end": "Khu B",
+        "cost": 300,
+        "status": "active"
+    },
+    {
+        "start": "Khu C",
+        "end": "Khu B",
+        "cost": 300,
+        "status": "active"
+    },
+    {
+        "start": "Xưởng máy",
+        "end": "Khu F",
+        "cost": 600,
+        "status": "active"
+    },
+    {
+        "start": "Tòa nhà trung tâm",
+        "end": "Khu F",
+        "cost": 600,
+        "status": "active"
+    },
+    {
+        "start": "Tòa E",
+        "end": "Căn tin A",
+        "cost": 100,
+        "status": "active"
+    },
+    {
+        "start": "Tòa nhà trung tâm",
+        "end": "Căn tin A",
+        "cost": 200,
+        "status": "active"
+    },
+    {
+        "start": "Xưởng thực tập in",
+        "end": "Tòa E",
+        "cost": 400,
+        "status": "active"
+    },
+    {
+        "start": "Xưởng thực tập in",
+        "end": "Xưởng thực tập nguội",
+        "cost": 300,
+        "status": "active"
+    },
+    {
+        "start": "Xưởng thực tập nguội",
+        "end": "Văn phòng khoa CKM",
+        "cost": 400,
+        "status": "active"
+    },
+    {
+        "start": "Xưởng thực tập nghề",
+        "end": "Văn phòng khoa CKM",
+        "cost": 200,
+        "status": "active"
+    },
+    {
+        "start": "Tòa nhà trung tâm",
+        "end": "Xưởng thực tập nghề",
+        "cost": 500,
+        "status": "active"
+    },
+    {
+        "start": "Xưởng thực tập nghề",
+        "end": "Tòa E",
+        "cost": 300,
+        "status": "active"
+    },
+    {
+        "start": "Xưởng thực tập nghề",
+        "end": "Xưởng thực tập in",
+        "cost": 200,
+        "status": "active"
+    },
+    {
+        "start": "Xưởng thực tập nguội",
+        "end": "Xưởng thực tập nghề",
+        "cost": 400,
+        "status": "active"
+    }
 ]

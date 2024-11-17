@@ -2,6 +2,7 @@ import networkx as nx
 from config.settings import NETWORK_FILE_PATH
 import json
 import heapq
+import heapq
 
 
 def load_connections():
@@ -33,22 +34,53 @@ def build_graph(connections):
     return graph
 
 # Thuật toán Dijkstra để tìm đường đi ngắn nhất
-def dijkstra(graph, start):
-    queue = [(0, start)]  # Khởi tạo hàng đợi với điểm gốc và khoảng cách ban đầu là 0
-    distances = {start: 0}  # Lưu khoảng cách ngắn nhất tới mỗi đỉnh
-    previous_nodes = {start: None}  # Lưu lại cha của mỗi đỉnh để truy vết đường đi
-    
-    while queue:
-        current_distance, current_node = heapq.heappop(queue)  # Lấy node có khoảng cách nhỏ nhất
-        
-        # Kiểm tra các node hàng xóm
-        for neighbor, weight in graph.get(current_node, []):  # Sử dụng graph.get để tránh lỗi KeyError
-            distance = current_distance + weight
-            
-            # Cập nhật khoảng cách nếu tìm thấy đường đi ngắn hơn
-            if neighbor not in distances or distance < distances[neighbor]:
-                distances[neighbor] = distance
-                previous_nodes[neighbor] = current_node
-                heapq.heappush(queue, (distance, neighbor))
+def find_shortest_path(start, end, connections):
+    # Tạo đồ thị từ danh sách kết nối
+    graph = {}
+    for conn in connections:
+        graph.setdefault(conn['start'], []).append((conn['end'], conn['cost']))
+        graph.setdefault(conn['end'], []).append((conn['start'], conn['cost']))  # Đồ thị không hướng
 
-    return previous_nodes, distances  # Trả về cha của các node và khoảng cách tới từng điểm
+    # Dijkstra's algorithm
+    # Dùng heapq để lấy điểm có chi phí thấp nhất
+    pq = [(0, start)]  # (chi phí, điểm bắt đầu)
+    distances = {start: 0}  # Khoảng cách từ start đến các điểm
+    previous_nodes = {start: None}  # Lưu trữ điểm trước đó để truy vết đường đi
+    visited = set()  # Lưu trữ các điểm đã duyệt
+
+    while pq:
+        current_distance, current_node = heapq.heappop(pq)
+
+        if current_node in visited:
+            continue
+
+        visited.add(current_node)
+
+        # Nếu điểm đến được tìm thấy, dừng lại
+        if current_node == end:
+            break
+
+        for neighbor, cost in graph.get(current_node, []):
+            if neighbor in visited:
+                continue
+
+            new_distance = current_distance + cost
+            if new_distance < distances.get(neighbor, float('inf')):
+                distances[neighbor] = new_distance
+                previous_nodes[neighbor] = current_node
+                heapq.heappush(pq, (new_distance, neighbor))
+
+    # Truy vết đường đi từ end đến start
+    path = []
+    total_cost = distances.get(end, float('inf'))
+
+    # Nếu có đường đi từ start đến end, truy vết ngược lại để xây dựng đường đi
+    if total_cost != float('inf'):
+        current_node = end
+        while current_node is not None:
+            path.append(current_node)
+            current_node = previous_nodes[current_node]
+
+        path.reverse()  # Đảo ngược để có đúng thứ tự đường đi
+
+    return path, total_cost
