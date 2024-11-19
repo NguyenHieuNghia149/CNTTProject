@@ -96,18 +96,18 @@ def show_map():
 
 # Thêm ô nhập tọa độ mới
 def add_new_coordinate():
-    st.markdown("<h3 style='font-weight: bold; font-size: 24px;'>Thêm tọa độ mới</h3>", unsafe_allow_html=True)
-    name = st.text_input("Tên điểm:")
-    lat = st.number_input("Vĩ độ:", min_value=-90.0, max_value=90.0, format="%.6f")
-    lon = st.number_input("Kinh độ:", min_value=-180.0, max_value=180.0, format="%.6f")
+    st.markdown("<h3 style='font-weight: bold; font-size: 24px;'>Add new coordinates</h3>", unsafe_allow_html=True)
+    name = st.text_input("Name:")
+    lat = st.number_input("Latitude:", min_value=-90.0, max_value=90.0, format="%.6f")
+    lon = st.number_input("Longitude:", min_value=-180.0, max_value=180.0, format="%.6f")
 
-    if st.button("Thêm tọa độ"):
+    if st.button("Add"):
         if name and lat and lon:
             coordinates = read_coordinates()
             new_coordinate = {"name": name, "coordinates": [lat, lon]}
             coordinates.append(new_coordinate)
             save_coordinates(coordinates)
-            st.success("Tọa độ mới đã được thêm vào.")
+            st.success("New coordinates have been added successfully!")
             st.experimental_rerun()
         else:
             st.error("Vui lòng nhập đủ thông tin.")
@@ -130,12 +130,12 @@ def delete_coordinate(selected_name):
 
 # Hiển thị danh sách các điểm và cho phép xóa
 def delete_existing_coordinate():
-    st.markdown("<h3 style='font-weight: bold; font-size: 24px;'>Xóa tọa độ</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='font-weight: bold; font-size: 24px;'>Delete coordinates</h3>", unsafe_allow_html=True)
     coordinates = read_coordinates()
     names = [coord["name"] for coord in coordinates]
-    selected_name = st.selectbox("Chọn điểm để xóa:", options=["-- Chọn điểm --"] + names)
+    selected_name = st.selectbox("Select coordinates to delete:", options=["-- Chọn điểm --"] + names)
 
-    if st.button("Xóa điểm"):
+    if st.button("Delete"):
         if selected_name and selected_name != "-- Chọn điểm --":
             delete_coordinate(selected_name)
         else:
@@ -143,7 +143,7 @@ def delete_existing_coordinate():
 
 # Gọi các hàm trong Streamlit để hiển thị bản đồ và ô nhập/xóa tọa độ mới
 def main():
-    st.title("Bản đồ tọa độ")
+    st.title("Coordinate map")
     col1, col2 = st.columns([3, 1])
 
     with col1:
