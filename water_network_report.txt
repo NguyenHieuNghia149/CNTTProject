@@ -1,0 +1,6 @@
+Water Network Management System - Report
+=======================================
+Generated on: 2024-11-19 13:10:06
+Shortest Path: Nhà máy nước Thủ Đức -> Xưởng máy -> Khu A -> Khu D
+Total Cost: 1100
+=======================================

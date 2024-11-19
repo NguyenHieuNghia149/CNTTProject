@@ -26,8 +26,8 @@
     {
         "start": "Xưởng máy",
         "end": "Tòa nhà trung tâm",
-        "cost": 500,
-        "status": "active"
+        "cost": 800,
+        "status": "maintenance"
     },
     {
         "start": "Xưởng máy",

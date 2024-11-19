@@ -1,6 +1,6 @@
 {
-    "date": "2024-11-18 05:46:31",
-    "total_cost": 24400,
+    "date": "2024-11-19 13:09:53",
+    "total_cost": 24700,
     "network_connections": [
         {
             "start": "Khu A",
@@ -29,8 +29,8 @@
         {
             "start": "X\u01b0\u1edfng m\u00e1y",
             "end": "T\u00f2a nh\u00e0 trung t\u00e2m",
-            "cost": 500,
-            "status": "active"
+            "cost": 800,
+            "status": "maintenance"
         },
         {
             "start": "X\u01b0\u1edfng m\u00e1y",

@@ -31,11 +31,23 @@ def get_coordinates_by_name(name, coordinates):
     return None
 
 # Hàm vẽ đường nối giữa hai điểm
+# Hàm vẽ đường nối giữa hai điểm với popup hoặc tooltip
 def draw_connection(map_obj, coord_from, coord_to, cost, status):
-    line = folium.PolyLine([coord_from, coord_to], color="blue", weight=2.5, opacity=1)
-    line.add_to(map_obj)
+    # Vẽ đường nối giữa hai tọa độ
+    line = folium.PolyLine(
+        [coord_from, coord_to],
+        color="blue" if status == "active" else "red",  # Đổi màu theo trạng thái
+        weight=2.5,
+        opacity=1
+    )
+    # Nội dung hiển thị
     line_popup = f"Cost: {cost} | Status: {status}"
-    folium.Popup(line_popup).add_to(line)
+    folium.Popup(line_popup).add_to(line)  # Thêm popup cho đường nối
+    # Hoặc dùng tooltip nếu muốn hiển thị khi hover
+    # folium.Tooltip(line_popup).add_to(line)
+
+    line.add_to(map_obj)
+
 
 # Lưu tọa độ vào file JSON
 def save_coordinates(coordinates):
@@ -80,6 +92,7 @@ def show_map():
 
     # Hiển thị bản đồ trong Streamlit
     folium_static(m)
+
 
 # Thêm ô nhập tọa độ mới
 def add_new_coordinate():

@@ -35,14 +35,17 @@ def build_graph(connections):
 
 # Thuật toán Dijkstra để tìm đường đi ngắn nhất
 def find_shortest_path(start, end, connections):
+    """
+    Tìm đường đi ngắn nhất từ start đến end, bỏ qua các kết nối có status là 'maintenance'.
+    """
     # Tạo đồ thị từ danh sách kết nối
     graph = {}
     for conn in connections:
-        graph.setdefault(conn['start'], []).append((conn['end'], conn['cost']))
-        graph.setdefault(conn['end'], []).append((conn['start'], conn['cost']))  # Đồ thị không hướng
+        if conn['status'] == 'active':  # Chỉ xét các kết nối active
+            graph.setdefault(conn['start'], []).append((conn['end'], conn['cost']))
+            graph.setdefault(conn['end'], []).append((conn['start'], conn['cost']))  # Đồ thị không hướng
 
     # Dijkstra's algorithm
-    # Dùng heapq để lấy điểm có chi phí thấp nhất
     pq = [(0, start)]  # (chi phí, điểm bắt đầu)
     distances = {start: 0}  # Khoảng cách từ start đến các điểm
     previous_nodes = {start: None}  # Lưu trữ điểm trước đó để truy vết đường đi
@@ -74,7 +77,6 @@ def find_shortest_path(start, end, connections):
     path = []
     total_cost = distances.get(end, float('inf'))
 
-    # Nếu có đường đi từ start đến end, truy vết ngược lại để xây dựng đường đi
     if total_cost != float('inf'):
         current_node = end
         while current_node is not None:
