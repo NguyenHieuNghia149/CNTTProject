@@ -10,7 +10,8 @@ import streamlit as st
 
 def main():
     # Đặt tiêu đề chính cho ứng dụng
-    st.set_page_config(page_title="Water Network Management System", layout="wide")
+    # Set Streamlit page configuration
+    st.set_page_config(page_title="Water Network Management System", layout="wide", page_icon="💧")
     st.title("Water Network Management System")
 
     # Tạo menu điều hướng trong sidebar

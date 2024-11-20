@@ -31,23 +31,16 @@ def get_coordinates_by_name(name, coordinates):
     return None
 
 # Hàm vẽ đường nối giữa hai điểm
-# Hàm vẽ đường nối giữa hai điểm với popup hoặc tooltip
 def draw_connection(map_obj, coord_from, coord_to, cost, status):
-    # Vẽ đường nối giữa hai tọa độ
     line = folium.PolyLine(
         [coord_from, coord_to],
         color="blue" if status == "active" else "red",  # Đổi màu theo trạng thái
         weight=2.5,
         opacity=1
     )
-    # Nội dung hiển thị
     line_popup = f"Cost: {cost} | Status: {status}"
-    folium.Popup(line_popup).add_to(line)  # Thêm popup cho đường nối
-    # Hoặc dùng tooltip nếu muốn hiển thị khi hover
-    # folium.Tooltip(line_popup).add_to(line)
-
+    folium.Popup(line_popup).add_to(line)
     line.add_to(map_obj)
-
 
 # Lưu tọa độ vào file JSON
 def save_coordinates(coordinates):
@@ -79,9 +72,13 @@ def show_map():
     # Đọc các kết nối đã lưu từ file
     connections = read_connections()
 
+    # Tập hợp tất cả các tọa độ để tính bounding box
+    bounds = []
+
     # Thêm các marker cho mỗi tọa độ đã lưu
     for coord in coordinates:
         add_marker(m, coord["coordinates"], f'{coord["name"]}')
+        bounds.append(coord["coordinates"])  # Lưu lại tọa độ để fit bounds
 
     # Vẽ các tuyến đường nối giữa các điểm dựa trên kết nối
     for conn in connections:
@@ -89,10 +86,14 @@ def show_map():
         coord_to = get_coordinates_by_name(conn["end"], coordinates)
         if coord_from and coord_to:
             draw_connection(m, coord_from, coord_to, conn["cost"], conn["status"])
+            bounds.extend([coord_from, coord_to])  # Thêm tọa độ vào bounds
+
+    # Điều chỉnh bản đồ để hiển thị tất cả các điểm
+    if bounds:
+        m.fit_bounds(bounds)
 
     # Hiển thị bản đồ trong Streamlit
     folium_static(m)
-
 
 # Thêm ô nhập tọa độ mới
 def add_new_coordinate():
