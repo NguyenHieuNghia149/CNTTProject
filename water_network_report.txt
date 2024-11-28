@@ -1,6 +1,6 @@
 Water Network Management System - Report
 =======================================
-Generated on: 2024-11-19 13:28:45
-Shortest Path: Nhà máy nước Thủ Đức -> Xưởng máy -> Khu A -> Tòa E -> Căn tin A -> Tòa nhà trung tâm -> Xưởng thực tập nguội
-Total Cost: 1800
+Generated on: 2024-11-27 20:50:19
+Shortest Path: Nhà máy nước Thủ Đức -> Xưởng máy -> Khu A -> Tòa E -> Xưởng thực tập nghề -> Văn phòng khoa CKM
+Total Cost: 1600
 =======================================
